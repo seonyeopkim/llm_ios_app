@@ -5,7 +5,9 @@ let project = Project(
     targets: [
         .target(
             name: "Main",
-            destinations: [.iPhone],
+            destinations: [
+                .iPhone,
+            ],
             product: .app,
             bundleId: "seonyeopkim.App.Main",
             deploymentTargets: .iOS("26.0"),
@@ -17,14 +19,18 @@ let project = Project(
                     ],
                     "UISupportedInterfaceOrientations": [
                         "UIInterfaceOrientationPortrait",
-                    ]
+                    ],
                 ]
             ),
             buildableFolders: [
-                "Sources",
-                "Resources",
+                "Source",
             ],
-            dependencies: []
+            dependencies: [
+                .project(
+                    target: "ChatFeature",
+                    path: .relativeToRoot("Feature/ChatFeature"),
+                ),
+            ]
         ),
     ]
 )

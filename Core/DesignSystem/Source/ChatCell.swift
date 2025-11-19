@@ -1,0 +1,30 @@
+import SwiftUI
+
+public struct ChatCell: View {
+    public let prompt: String
+    public let response: String
+    
+    public var body: some View {
+        VStack(spacing: 30) {
+            HStack {
+                Spacer(minLength: 100)
+                Text(self.prompt)
+                    .padding()
+                    .font(.system(size: 15, weight: .bold))
+                    .background(DesignSystemAsset.promptBgColor.swiftUIColor)
+                    .foregroundStyle(DesignSystemAsset.promptTextColor.swiftUIColor)
+                    .cornerRadius(15)
+            }
+            HStack {
+                Text(self.response)
+                    .font(.system(size: 15, weight: .semibold))
+                Spacer()
+            }
+        }
+    }
+    
+    public init(prompt: String, response: String) {
+        self.prompt = prompt
+        self.response = response
+    }
+}
