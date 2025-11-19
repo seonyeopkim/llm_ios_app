@@ -5,11 +5,15 @@ import PackageDescription
     import struct ProjectDescription.PackageSettings
 
     let packageSettings = PackageSettings(
-        productTypes: [:]
+        productTypes: [
+            "MarkdownUI": .staticLibrary,
+        ]
     )
 #endif
 
 let package = Package(
     name: "Package",
-    dependencies: []
+    dependencies: [
+        .package(url: "https://github.com/gonzalezreal/swift-markdown-ui", .upToNextMajor(from: "2.4.1")),
+    ]
 )

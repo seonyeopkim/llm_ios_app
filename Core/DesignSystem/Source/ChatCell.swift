@@ -1,3 +1,4 @@
+import MarkdownUI
 import SwiftUI
 
 public struct ChatCell: View {
@@ -5,7 +6,7 @@ public struct ChatCell: View {
     public let response: String
     
     public var body: some View {
-        VStack(spacing: 30) {
+        VStack(spacing: 50) {
             HStack {
                 Spacer(minLength: 100)
                 Text(self.prompt)
@@ -15,11 +16,7 @@ public struct ChatCell: View {
                     .foregroundStyle(DesignSystemAsset.defaultText.swiftUIColor)
                     .cornerRadius(15)
             }
-            HStack {
-                Text(self.response)
-                    .font(.system(size: 15, weight: .semibold))
-                Spacer()
-            }
+            Markdown(self.response)
         }
     }
     

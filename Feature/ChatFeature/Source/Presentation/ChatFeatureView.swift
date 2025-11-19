@@ -12,8 +12,14 @@ public struct ChatFeatureView: View {
                 text: .constant(""),
             )
             .padding()
+            .focused(self.$isFocused)
+        }
+        .onTapGesture {
+            self.isFocused = false
         }
     }
+    
+    @FocusState private var isFocused: Bool
     
     public init() {}
 }

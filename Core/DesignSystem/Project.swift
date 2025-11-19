@@ -18,6 +18,7 @@ let project = Project(
                     target: "Entities",
                     path: .relativeToRoot("Foundation/Entities"),
                 ),
+                .external(name: "MarkdownUI"),
             ]
         ),
         .target(
