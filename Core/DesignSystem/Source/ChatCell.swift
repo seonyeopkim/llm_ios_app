@@ -11,8 +11,8 @@ public struct ChatCell: View {
                 Text(self.prompt)
                     .padding()
                     .font(.system(size: 15, weight: .bold))
-                    .background(DesignSystemAsset.promptBgColor.swiftUIColor)
-                    .foregroundStyle(DesignSystemAsset.promptTextColor.swiftUIColor)
+                    .background(DesignSystemAsset.defaultBackground.swiftUIColor)
+                    .foregroundStyle(DesignSystemAsset.defaultText.swiftUIColor)
                     .cornerRadius(15)
             }
             HStack {

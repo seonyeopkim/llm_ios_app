@@ -4,9 +4,14 @@ import SwiftUI
 
 public struct ChatFeatureView: View {
     public var body: some View {
-        VStack {
+        VStack(spacing: .zero) {
             Spacer()
             ChatList(.constant(ChatMocks.default))
+            RoundedTextField(
+                .chatTextFieldTitle,
+                text: .constant(""),
+            )
+            .padding()
         }
     }
     
