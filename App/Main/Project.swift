@@ -1,27 +1,20 @@
 import ProjectDescription
+import ProjectDescriptionHelpers
+
+let name = "Main"
 
 let project = Project(
-    name: "Main",
+    name: name,
     targets: [
         .target(
-            name: "Main",
+            name: name,
             destinations: [
                 .iPhone,
             ],
             product: .app,
-            bundleId: "seonyeopkim.App.Main",
-            deploymentTargets: .iOS("26.0"),
-            infoPlist: .extendingDefault(
-                with: [
-                    "UILaunchScreen": [
-                        "UIColorName": "",
-                        "UIImageName": "",
-                    ],
-                    "UISupportedInterfaceOrientations": [
-                        "UIInterfaceOrientationPortrait",
-                    ],
-                ]
-            ),
+            bundleId: "\(Default.team).\(name)",
+            deploymentTargets: Default.deploymentTarget,
+            infoPlist: .extendingDefault(with: Default.infoPlist()),
             buildableFolders: [
                 "Source",
             ],
@@ -30,7 +23,8 @@ let project = Project(
                     target: "ChatFeature",
                     path: .relativeToRoot("Feature/ChatFeature"),
                 ),
-            ]
+            ],
+            settings: Default.settings()
         ),
     ]
 )

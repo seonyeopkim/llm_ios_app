@@ -1,32 +1,20 @@
 import ProjectDescription
+import ProjectDescriptionHelpers
+
+let name = "Entities"
 
 let project = Project(
-    name: "Entities",
+    name: name,
     targets: [
-        .target(
-            name: "Entities",
-            destinations: .iOS,
+        .source(
+            name: name,
             product: .framework,
-            bundleId: "seonyeopkim.Foundation.Entities",
-            deploymentTargets: .iOS("26.0"),
-            infoPlist: .default,
-            buildableFolders: [
-                "Source",
-            ],
-            dependencies: []
         ),
-        .target(
-            name: "EntitiesTesting",
-            destinations: .iOS,
+        .testing(
+            name: name,
             product: .framework,
-            bundleId: "seonyeopkim.Foundation.Entities.Testing",
-            deploymentTargets: .iOS("26.0"),
-            infoPlist: .default,
-            buildableFolders: [
-                "Testing",
-            ],
-            dependencies: [
-                .target(name: "Entities"),
+            internalDependencies: [
+                .Source
             ]
         ),
     ]

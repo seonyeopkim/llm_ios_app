@@ -1,19 +1,15 @@
 import ProjectDescription
+import ProjectDescriptionHelpers
+
+let name = "DesignSystem"
 
 let project = Project(
-    name: "DesignSystem",
+    name: name,
     targets: [
-        .target(
-            name: "DesignSystem",
-            destinations: .iOS,
+        .source(
+            name: name,
             product: .framework,
-            bundleId: "seonyeopkim.Core.DesignSystem",
-            deploymentTargets: .iOS("26.0"),
-            infoPlist: .default,
-            buildableFolders: [
-                "Source",
-            ],
-            dependencies: [
+            externalDependencies: [
                 .project(
                     target: "Entities",
                     path: .relativeToRoot("Foundation/Entities"),
@@ -21,30 +17,12 @@ let project = Project(
                 .external(name: "MarkdownUI"),
             ]
         ),
-        .target(
-            name: "DesignSystemExample",
-            destinations: [
-                .iPhone,
+        .example(
+            name: name,
+            internalDependencies: [
+                .Source,
             ],
-            product: .app,
-            bundleId: "seonyeopkim.Core.DesignSystem.Example",
-            deploymentTargets: .iOS("26.0"),
-            infoPlist: .extendingDefault(
-                with: [
-                    "UILaunchScreen": [
-                        "UIColorName": "",
-                        "UIImageName": "",
-                    ],
-                    "UISupportedInterfaceOrientations": [
-                        "UIInterfaceOrientationPortrait",
-                    ],
-                ]
-            ),
-            buildableFolders: [
-                "Example",
-            ],
-            dependencies: [
-                .target(name: "DesignSystem"),
+            externalDependencies: [
                 .project(
                     target: "EntitiesTesting",
                     path: .relativeToRoot("Foundation/Entities"),

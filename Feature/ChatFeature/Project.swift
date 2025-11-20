@@ -1,53 +1,25 @@
 import ProjectDescription
+import ProjectDescriptionHelpers
+
+let name = "ChatFeature"
 
 let project = Project(
-    name: "ChatFeature",
+    name: name,
     targets: [
-        .target(
-            name: "ChatFeature",
-            destinations: .iOS,
+        .source(
+            name: name,
             product: .staticLibrary,
-            bundleId: "seonyeopkim.Feature.ChatFeature",
-            deploymentTargets: .iOS("26.0"),
-            infoPlist: .default,
-            buildableFolders: [
-                "Source",
-            ],
-            dependencies: [
+            externalDependencies: [
                 .project(
                     target: "DesignSystem",
                     path: .relativeToRoot("Core/DesignSystem"),
                 ),
-                .project(
-                    target: "EntitiesTesting",
-                    path: .relativeToRoot("Foundation/Entities"),
-                ),
             ]
         ),
-        .target(
-            name: "ChatFeatureExample",
-            destinations: [
-                .iPhone,
-            ],
-            product: .app,
-            bundleId: "seonyeopkim.Feature.ChatFeature.Example",
-            deploymentTargets: .iOS("26.0"),
-            infoPlist: .extendingDefault(
-                with: [
-                    "UILaunchScreen": [
-                        "UIColorName": "",
-                        "UIImageName": "",
-                    ],
-                    "UISupportedInterfaceOrientations": [
-                        "UIInterfaceOrientationPortrait",
-                    ],
-                ]
-            ),
-            buildableFolders: [
-                "Example",
-            ],
-            dependencies: [
-                .target(name: "ChatFeature"),
+        .example(
+            name: name,
+            internalDependencies: [
+                .Source,
             ]
         ),
     ]
