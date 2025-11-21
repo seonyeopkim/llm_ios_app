@@ -13,7 +13,7 @@ public extension Target {
                 "Source",
             ],
             dependencies: internalDependencies.converted(with: name) + externalDependencies,
-            settings: Default.settings()
+            settings: Default.settings(),
         )
     }
     
@@ -29,7 +29,7 @@ public extension Target {
                 "Interface",
             ],
             dependencies: [],
-            settings: Default.settings()
+            settings: Default.settings(),
         )
     }
     
@@ -45,7 +45,7 @@ public extension Target {
                 "Testing",
             ],
             dependencies: internalDependencies.converted(with: name),
-            settings: Default.settings()
+            settings: Default.settings(),
         )
     }
     
@@ -63,7 +63,7 @@ public extension Target {
                 "Example",
             ],
             dependencies: internalDependencies.converted(with: name) + externalDependencies,
-            settings: Default.settings()
+            settings: Default.settings(),
         )
     }
 }

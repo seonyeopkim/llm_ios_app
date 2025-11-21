@@ -7,5 +7,5 @@ let workspace = Workspace(
         "Feature/**",
         "Core/**",
         "Foundation/**",
-    ]
+    ],
 )

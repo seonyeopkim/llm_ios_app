@@ -23,8 +23,12 @@ let project = Project(
                     target: "ChatFeature",
                     path: .relativeToRoot("Feature/ChatFeature"),
                 ),
+                .project(
+                    target: "LanguageModelClient",
+                    path: .relativeToRoot("Core/LanguageModelClient"),
+                ),
             ],
-            settings: Default.settings()
+            settings: Default.settings(),
         ),
-    ]
+    ],
 )

@@ -6,7 +6,7 @@ struct ChatListExampleView: View {
     var body: some View {
         VStack {
             Spacer()
-            ChatList(.constant(ChatMocks.default))
+            ChatList(ChatMocks.default)
         }
     }
 }

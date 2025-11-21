@@ -2,14 +2,11 @@ import SwiftUI
 
 public struct RoundedTextField: View {
     public var body: some View {
-        TextField(
-            self.title,
-            text: self.$text,
-        )
-        .padding(.vertical, 10)
-        .padding(.horizontal, 15)
-        .background(DesignSystemAsset.defaultBackground.swiftUIColor)
-        .clipShape(Capsule())
+        TextField(self.title, text: self.$text)
+            .padding(.vertical, 10)
+            .padding(.horizontal, 15)
+            .background(DesignSystemAsset.defaultBackground.swiftUIColor)
+            .clipShape(Capsule())
     }
     
     private let title: String

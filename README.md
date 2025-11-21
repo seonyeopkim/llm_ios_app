@@ -10,6 +10,7 @@
 - SwiftUI
 - Combine
 - Tuist
+- Apple Foundation Models
 
 ## 🍰 Project Layers
 - App

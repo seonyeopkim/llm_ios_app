@@ -1,7 +1,7 @@
 import ProjectDescription
 import ProjectDescriptionHelpers
 
-let name = "Entities"
+let name = "LanguageModelClient"
 
 let project = Project(
     name: name,
@@ -9,13 +9,13 @@ let project = Project(
         .source(
             name: name,
             product: .framework,
+            internalDependencies: [
+                .Interface,
+            ],
         ),
-        .testing(
+        .interface(
             name: name,
             product: .framework,
-            internalDependencies: [
-                .Source,
-            ],
         ),
     ],
 )

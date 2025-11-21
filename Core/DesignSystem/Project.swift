@@ -15,7 +15,7 @@ let project = Project(
                     path: .relativeToRoot("Foundation/Entities"),
                 ),
                 .external(name: "MarkdownUI"),
-            ]
+            ],
         ),
         .example(
             name: name,
@@ -27,7 +27,7 @@ let project = Project(
                     target: "EntitiesTesting",
                     path: .relativeToRoot("Foundation/Entities"),
                 ),
-            ]
+            ],
         ),
-    ]
+    ],
 )

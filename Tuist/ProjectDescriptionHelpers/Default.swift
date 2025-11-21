@@ -20,7 +20,7 @@ public struct Default {
         .settings(
             base: [
                 "SWIFT_VERSION": "6.0",
-            ]
+            ],
         )
     }
 }

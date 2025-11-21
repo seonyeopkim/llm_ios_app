@@ -6,7 +6,7 @@ public struct ChatCell: View {
     public let response: String
     
     public var body: some View {
-        VStack(spacing: 50) {
+        VStack(spacing: 30) {
             HStack {
                 Spacer(minLength: 100)
                 Text(self.prompt)
