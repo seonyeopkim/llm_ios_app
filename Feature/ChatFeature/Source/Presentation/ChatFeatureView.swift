@@ -6,7 +6,7 @@ public struct ChatFeatureView: View {
     public var body: some View {
         VStack(spacing: .zero) {
             Spacer()
-            ChatList(self.viewModel.dataSources)
+            ChatList(self.viewModel.dataSource)
             RoundedTextField(.chatTextFieldTitle, text: self.$viewModel.prompt)
                 .onSubmit {
                     self.viewModel.sendPrompt()
@@ -15,7 +15,7 @@ public struct ChatFeatureView: View {
                 .padding()
         }
         .alert("", isPresented: self.$viewModel.showError) {} message: {
-            Text(self.viewModel.error)
+            Text(self.viewModel.error?.localizedDescription ?? "")
         }
         .onTapGesture {
             self.isFocused = false

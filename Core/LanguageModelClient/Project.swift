@@ -17,5 +17,18 @@ let project = Project(
             name: name,
             product: .framework,
         ),
+        .testing(
+            name: name,
+            product: .framework,
+            internalDependencies: [
+                .Interface,
+            ],
+            externalDependencies: [
+                .project(
+                    target: "Utils",
+                    path: .relativeToRoot("Foundation/Utils"),
+                ),
+            ],
+        ),
     ],
 )

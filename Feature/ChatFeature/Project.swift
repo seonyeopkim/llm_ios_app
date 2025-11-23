@@ -27,15 +27,41 @@ let project = Project(
             name: name,
             product: .staticLibrary,
         ),
+        .tests(
+            name: name,
+            internalDependencies: [
+                .Source,
+                .Testing,
+            ],
+            externalDependencies: [
+                .project(
+                    target: "LanguageModelClientTesting",
+                    path: .relativeToRoot("Core/LanguageModelClient"),
+                ),
+            ],
+        ),
+        .testing(
+            name: name,
+            product: .staticLibrary,
+            internalDependencies: [
+                .Interface,
+            ],
+            externalDependencies: [
+                .project(
+                    target: "LanguageModelClientInterface",
+                    path: .relativeToRoot("Core/LanguageModelClient"),
+                ),
+            ],
+        ),
         .example(
             name: name,
             internalDependencies: [
                 .Source,
+                .Testing,
             ],
             externalDependencies: [
-                // TODO: Create Testing target and Remove the dependency below
                 .project(
-                    target: "LanguageModelClient",
+                    target: "LanguageModelClientTesting",
                     path: .relativeToRoot("Core/LanguageModelClient"),
                 ),
             ],

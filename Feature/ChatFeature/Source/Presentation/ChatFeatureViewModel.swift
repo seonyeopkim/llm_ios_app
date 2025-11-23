@@ -1,12 +1,11 @@
 import ChatFeatureInterface
 import Combine
 import Entities
-import Foundation
 
 @MainActor
 public final class ChatFeatureViewModel: ObservableObject {
-    @Published private(set) var dataSources = [Chat]()
-    @Published private(set) var error = String()
+    @Published private(set) var dataSource = [Chat]()
+    @Published private(set) var error: Error?
     
     @Published var prompt = String()
     @Published var showError: Bool = false
@@ -25,17 +24,17 @@ public final class ChatFeatureViewModel: ObservableObject {
         let prompt = self.prompt
         self.prompt = ""
         
-        let id = UUID()
-        self.dataSources.append(Chat(id: id, prompt: prompt))
+        let newChat = Chat(prompt: prompt)
+        self.dataSource.append(newChat)
         
         Task {
             do {
                 for try await partial in self.useCase.streamResponse(to: prompt) {
-                    let newChat = [Chat(id: id, prompt: prompt, response: partial)]
-                    self.dataSources = self.dataSources.dropLast() + newChat
+                    let currentChat = [Chat(id: newChat.id, prompt: prompt, response: partial)]
+                    self.dataSource = self.dataSource.dropLast() + currentChat
                 }
             } catch {
-                self.error = error.localizedDescription
+                self.error = error
                 self.showError = true
             }
         }

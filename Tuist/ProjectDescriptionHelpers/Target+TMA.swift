@@ -33,7 +33,23 @@ public extension Target {
         )
     }
     
-    static func testing(name: String, product: Product, internalDependencies: [TMATarget]) -> Target {
+    static func tests(name: String, internalDependencies: [TMATarget], externalDependencies: [TargetDependency] = []) -> Target {
+        .target(
+            name: "\(name)Tests",
+            destinations: .iOS,
+            product: .unitTests,
+            bundleId: "\(Default.team).\(name)Tests",
+            deploymentTargets: Default.deploymentTarget,
+            infoPlist: .default,
+            buildableFolders: [
+                "Tests",
+            ],
+            dependencies: internalDependencies.converted(with: name) + externalDependencies,
+            settings: Default.settings(),
+        )
+    }
+    
+    static func testing(name: String, product: Product, internalDependencies: [TMATarget], externalDependencies: [TargetDependency] = []) -> Target {
         .target(
             name: "\(name)Testing",
             destinations: .iOS,
@@ -44,7 +60,7 @@ public extension Target {
             buildableFolders: [
                 "Testing",
             ],
-            dependencies: internalDependencies.converted(with: name),
+            dependencies: internalDependencies.converted(with: name) + externalDependencies,
             settings: Default.settings(),
         )
     }
