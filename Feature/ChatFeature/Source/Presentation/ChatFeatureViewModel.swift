@@ -4,10 +4,9 @@ import Entities
 
 @MainActor
 public final class ChatFeatureViewModel: ObservableObject {
-    @Published private(set) var dataSource = [Chat]()
-    @Published private(set) var error: Error?
-    
+    @Published var dataSource = [Chat]()
     @Published var prompt = String()
+    @Published var error: Error?
     @Published var showError: Bool = false
     
     private let useCase: ChatFeatureUseCaseInterface
