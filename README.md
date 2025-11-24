@@ -10,6 +10,7 @@
 - SwiftUI
 - Combine
 - Tuist
+- Swift Testing
 - Apple Foundation Models
 
 ## 🍰 Project Layers
@@ -17,3 +18,6 @@
 - Feature
 - Core
 - Foundation
+
+## 📊 Dependency Graph
+![Dependency Graph](graph.png)
