@@ -10,5 +10,11 @@ let project = Project(
             name: name,
             product: .framework,
         ),
+        .tests(
+            name: name,
+            internalDependencies: [
+                .Source,
+            ],
+        ),
     ],
 )
